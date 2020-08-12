@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
+import Shop from './Shop'
 
 class App extends Component {
-  state = { list: ['test','how do i look','sdfgsdfsdsdfsdgdsg'], input: '', coin: 0 };
+  state = {
+    list: ['test', 'how do i look', 'sdfgsdfsdsdfsdgdsg'],
+    input: '',
+    coin: 0,
+    shop:[{name:'sword',image:'/images/icons/sword_1.png',price:30},
+    {name:'sword2',image:'images/icons/sword_2.png',price:50},
+    {name:'sword3',image:'/images/icons/sword_3.png',price:100}]
+  };
 
   onDelete = (found) => {
     let newList = this.state.list.filter((item) => item !== found);
@@ -27,17 +35,21 @@ class App extends Component {
   handleComplete = (found) => {
     let newList = this.state.list.filter((item) => item !== found);
     let newCoin = this.state.coin + 20;
-    this.setState({
-      list: newList,
-      coin: newCoin,
-    },
-    ()=>{
-      console.log(this.state.coin)
-    });
+    this.setState(
+      {
+        list: newList,
+        coin: newCoin,
+      },
+      () => {
+        console.log(this.state.coin);
+      }
+    );
   };
   render() {
     return (
       <div>
+        <div style={{display:'flex',flexDirection:'row'}}>
+        <div>
         <Todo
           list={this.state.list}
           input={this.state.input}
@@ -46,7 +58,12 @@ class App extends Component {
           searchTerm={this.state.searchTerm}
           onDelete={this.onDelete}
           handleComplete={this.handleComplete}
-        />
+          />
+        </div>
+        <div>
+        <Shop Shop={this.state.shop}/>
+        </div>
+        </div>
       </div>
     );
   }

@@ -5,7 +5,7 @@ class Todo extends Component {
   render() {
       console.log(this.props)
     return (
-      <div className="ui container">
+      <div className="ui container" style={{width:'500px'}}>
         <Input
           input={this.props.input}
           handleChange={this.props.handleChange}
