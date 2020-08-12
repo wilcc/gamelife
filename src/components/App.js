@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 
 class App extends Component {
-  state = { list: [], input: '', coin: 0 };
+  state = { list: ['test','how do i look','sdfgsdfsdsdfsdgdsg'], input: '', coin: 0 };
 
-  
+  onDelete = (found) => {
+    let newList = this.state.list.filter((item) => item !== found);
+    this.setState({
+      list: newList,
+    });
+  };
   handleChange = (event) => {
     this.setState({
       input: event.target.value,
@@ -19,7 +24,17 @@ class App extends Component {
       });
     }
   };
-  
+  handleComplete = (found) => {
+    let newList = this.state.list.filter((item) => item !== found);
+    let newCoin = this.state.coin + 20;
+    this.setState({
+      list: newList,
+      coin: newCoin,
+    },
+    ()=>{
+      console.log(this.state.coin)
+    });
+  };
   render() {
     return (
       <div>
@@ -29,8 +44,8 @@ class App extends Component {
           handleChange={this.handleChange}
           handleKeyDown={this.handleKeyDown}
           searchTerm={this.state.searchTerm}
-
-
+          onDelete={this.onDelete}
+          handleComplete={this.handleComplete}
         />
       </div>
     );
