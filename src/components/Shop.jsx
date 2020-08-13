@@ -1,29 +1,28 @@
 import React from 'react';
 
 function Shop(props) {
+
   return (
-    <div>
-      <div className="ui container" style={{ width: '50%' }}>
-        <ul className="ui celled animated list">
+
+      <div className="ui container" style={{display:'flex',flexDirection:'row',alignContent:'center',flexWrap:'wrap', width:'50%'}}>
+        {/* <ul className="ui celled animated list"> */}
           {props.Shop.map((item) => {
             return (
-              <li className="item">
-                <div>
-                  Name:{item.name}
+            //   <li className="item">
+            <div>
+                <div className='ui small image'>
+                <img src={item.image} alt="" />
                 </div>
                 <div>
-                  Price:{item.price}
+                  {item.price} <img src="/images/icons/goldcoin.png" alt="" width='20px'/>
                 </div>
-                <div>
-
-                  image: <img src={item.image} alt="" width='30px'/>
-                </div>
-              </li>
+            {/* //   </li> */}
+            </div>
             );
           })}
-        </ul>
+        {/* </ul> */}
       </div>
-    </div>
+
   );
 }
 

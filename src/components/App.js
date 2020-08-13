@@ -9,7 +9,16 @@ class App extends Component {
     coin: 0,
     shop:[{name:'sword',image:'/images/icons/sword_1.png',price:30},
     {name:'sword2',image:'images/icons/sword_2.png',price:50},
-    {name:'sword3',image:'/images/icons/sword_3.png',price:100}]
+    {name:'sword3',image:'/images/icons/sword_3.png',price:100},
+    {name:'Armor',image:'/images/icons/Armor_1.png',price:20},
+    {name:'Armor2',image:'/images/icons/Armor_2.png',price:40},
+    {name:'Armor3',image:'/images/icons/Armor_3.png',price:60},
+    {name:'Armor4',image:'/images/icons/Armor_4.png',price:80},
+    {name:'Armor5',image:'/images/icons/Armor_5.png',price:100},
+    {name:'Armor6',image:'/images/icons/Armor_7.png',price:120},
+    {name:'Armor7',image:'/images/icons/Armor_8.png',price:140},
+    {name:'Armor8',image:'/images/icons/Armor_10.png',price:200},
+  ]
   };
 
   onDelete = (found) => {
