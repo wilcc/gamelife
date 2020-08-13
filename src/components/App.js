@@ -33,23 +33,28 @@ class App extends Component {
 
     })
   }
-  onDelete = (found) => {
-    let newList = this.state.list.filter((item) => item !== found);
-    this.setState({
-      list: newList,
-    });
+  onDelete = (id) => {
+    axios.delete(`http://localhost:8080/todo/remove/${id}`).then(()=>{
+      this.loadList()
+    })
+    
   };
   handleChange = (event) => {
     this.setState({
       input: event.target.value,
     });
   };
-  handleKeyDown = (e) => {
+  handleKeyDown = (e,list) => {
+    e.preventDefault()
     if (e.key === 'Enter') {
-      let newTodo = [this.state.input, ...this.state.list];
-      this.setState({
-        list: newTodo,
-        input: '',
+      let axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Access-Control-Allow-Origin': '*',
+        },
+      };
+      axios.post('/create', list, axiosConfig).then(() => {
+        this.loadList();
       });
     }
   };
