@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
 import Shop from './Shop'
+import axios from 'axios';
+
 
 class App extends Component {
   state = {
-    list: ['test', 'how do i look', 'sdfgsdfsdsdfsdgdsg'],
+    list: [],
     input: '',
     coin: 0,
     shop:[{name:'sword',image:'/images/icons/sword_1.png',price:30},
@@ -20,7 +22,17 @@ class App extends Component {
     {name:'Armor8',image:'/images/icons/Armor_10.png',price:200},
   ]
   };
+  loadList = () =>{
+    const url = 'http://localhost:8080/todo/all'
+    axios.get(url).then((dbList)=>{
+      this.setState({
+        list: dbList.data
+      },()=>{
+        console.log('listlistacacascascasc',this.state.list)
+      })
 
+    })
+  }
   onDelete = (found) => {
     let newList = this.state.list.filter((item) => item !== found);
     this.setState({
@@ -42,7 +54,7 @@ class App extends Component {
     }
   };
   handleComplete = (found) => {
-    let newList = this.state.list.filter((item) => item !== found);
+    let newList = this.state.list.filter((item) => item._id !== found._id);
     let newCoin = this.state.coin + 20;
     this.setState(
       {
@@ -56,10 +68,15 @@ class App extends Component {
   };
   handlePurchase = (item)=>{
     let newCoin = this.state.coin - item.price
-    newCoin < 0? console.log('sorry not enough coin') : this.setState({coin:newCoin},
+    let newList = this.state.shop.filter((shopItem)=> shopItem.name !== item.name)
+    newCoin < 0? console.log('sorry not enough coin') : this.setState({coin:newCoin,shop:newList},
     console.log(this.state.coin))
   }
+  componentDidMount() {
+    this.loadList();
+  }
   render() {
+    console.log(this.state.list)
     return (
       <div>
         <div style={{display:'flex',flexDirection:'row'}}>
