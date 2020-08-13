@@ -54,6 +54,11 @@ class App extends Component {
       }
     );
   };
+  handlePurchase = (item)=>{
+    let newCoin = this.state.coin - item.price
+    newCoin < 0? console.log('sorry not enough coin') : this.setState({coin:newCoin},
+    console.log(this.state.coin))
+  }
   render() {
     return (
       <div>
@@ -70,7 +75,7 @@ class App extends Component {
           />
         </div>
         <div>
-        <Shop Shop={this.state.shop}/>
+        <Shop Shop={this.state.shop} handlePurchase={this.handlePurchase}/>
         </div>
         </div>
       </div>
