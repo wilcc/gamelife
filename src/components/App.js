@@ -27,8 +27,6 @@ class App extends Component {
     axios.get(url).then((dbList)=>{
       this.setState({
         list: dbList.data
-      },()=>{
-        console.log('listlistacacascascasc',this.state.list)
       })
 
     })
@@ -44,8 +42,8 @@ class App extends Component {
       input: event.target.value,
     });
   };
-  handleKeyDown = (e,list) => {
-    e.preventDefault()
+  handleKeyDown = (e) => {
+    // e.preventDefault()
     if (e.key === 'Enter') {
       let axiosConfig = {
         headers: {
@@ -53,8 +51,13 @@ class App extends Component {
           'Access-Control-Allow-Origin': '*',
         },
       };
-      axios.post('/create', list, axiosConfig).then(() => {
+      let input = this.state.input
+      console.log(this.state.input)
+      axios.post('http://localhost:8080/todo/create',{input}, [axiosConfig]).then(() => {
         this.loadList();
+        this.setState({
+          input:''
+        })
       });
     }
   };
@@ -81,7 +84,6 @@ class App extends Component {
     this.loadList();
   }
   render() {
-    console.log(this.state.list)
     return (
       <div>
         <div style={{display:'flex',flexDirection:'row'}}>

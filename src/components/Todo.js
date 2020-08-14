@@ -3,7 +3,6 @@ import Input from './Input';
 
 class Todo extends Component {
   render() {
-    console.log(this.props.list);
     return (
       <div className="ui container" style={{ width: '500px' }}>
         <Input
