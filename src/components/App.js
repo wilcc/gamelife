@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
 import Shop from './Shop';
+import Daily from './Daily'
 import axios from 'axios';
 
 class App extends Component {
   state = {
-    list: [],
-    input: '',
     coin: 0,
     shop: [
       { name: 'sword', image: '/images/icons/sword_1.png', price: 30 },
@@ -30,37 +29,37 @@ class App extends Component {
       });
     });
   };
-  onDelete = (id) => {
-    axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
-      this.loadList();
-    });
-  };
-  handleChange = (event) => {
-    this.setState({
-      input: event.target.value,
-    });
-  };
-  handleKeyDown = (e) => {
-    // e.preventDefault()
-    if (e.key === 'Enter') {
-      let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'Access-Control-Allow-Origin': '*',
-        },
-      };
-      let input = this.state.input;
-      console.log(this.state.input);
-      axios
-        .post('http://localhost:8080/todo/create', { input }, [axiosConfig])
-        .then(() => {
-          this.loadList();
-          this.setState({
-            input: '',
-          });
-        });
-    }
-  };
+  // onDelete = (id) => {
+  //   axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
+  //     this.loadList();
+  //   });
+  // };
+  // handleChange = (event) => {
+  //   this.setState({
+  //     input: event.target.value,
+  //   });
+  // };
+  // handleKeyDown = (e) => {
+  //   // e.preventDefault()
+  //   if (e.key === 'Enter') {
+  //     let axiosConfig = {
+  //       headers: {
+  //         'Content-Type': 'application/json; charset=UTF-8',
+  //         'Access-Control-Allow-Origin': '*',
+  //       },
+  //     };
+  //     let input = this.state.input;
+  //     console.log(this.state.input);
+  //     axios
+  //       .post('http://localhost:8080/todo/create', { input }, [axiosConfig])
+  //       .then(() => {
+  //         this.loadList();
+  //         this.setState({
+  //           input: '',
+  //         });
+  //       });
+  //   }
+  // };
   setCoin = (newCoin) =>{
     this.setState({
       coin:newCoin
@@ -98,10 +97,12 @@ class App extends Component {
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div>
             <Todo
-              list={this.state.list}
-              loadList={this.loadList}
-              onDelete={this.onDelete}
-              handleComplete={this.handleComplete}
+              setCoin = {this.setCoin}
+              coin={this.state.coin}
+            />
+          </div>
+          <div>
+            <Daily
               setCoin = {this.setCoin}
               coin={this.state.coin}
             />

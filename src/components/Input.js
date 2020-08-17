@@ -5,7 +5,7 @@ const Input = (props) => {
   return (
     <div className="ui fluid input">
       <input type="text" 
-      placeholder='enter new todo'
+      placeholder='Enter new task'
       onChange={props.handleChange}
       value={props.input} 
       onKeyDown={props.handleKeyDown}

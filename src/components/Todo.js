@@ -16,6 +16,11 @@ class Todo extends Component {
           });
         });
       };
+      onDelete = (id) => {
+        axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
+          this.loadList();
+        });
+      };
     handleChange = (event) => {
         this.setState({
           input: event.target.value,
@@ -69,7 +74,7 @@ class Todo extends Component {
                   <a
                     href="/#"
                     onClick={() => {
-                      this.props.onDelete(item._id);
+                      this.onDelete(item._id);
                     }}
                   >
                     <i className="trash icon"></i>
