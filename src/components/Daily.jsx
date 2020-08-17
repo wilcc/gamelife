@@ -47,7 +47,7 @@ class Daily extends Component {
         }
       };
       handleComplete = (id) => {
-        axios.delete(`http://localhost:8080/daily/remove/${id}`).then(() => {
+        axios.put(`http://localhost:8080/daily/complete/${id}`).then(() => {
           this.loadList();
         });
         let newCoin = this.props.coin + 20;
@@ -55,6 +55,9 @@ class Daily extends Component {
         console.log(this.props.coin)
           ;
       };
+      handleRefresh = ()=>{
+        
+      }
       componentDidMount() {
         this.loadList();
       }
@@ -70,6 +73,7 @@ class Daily extends Component {
           <ul className="ui celled animated list">
             {this.state.list.map((item) => {
               return (
+                item.completed === false? 
                 <li key={item._id} className="item">
                   <a
                     href="/#"
@@ -87,7 +91,24 @@ class Daily extends Component {
                   >
                     {item.input}
                   </a>
-                </li>
+                </li> :
+                <li key={item._id} className="item" style={{backgroundColor:'yellow'}}>
+                <a
+                  href="/#"
+                  onClick={() => {
+                    this.onDelete(item._id);
+                  }}
+                >
+                  <i className="trash icon"></i>
+                </a>
+                <a
+                  href="/#"
+                  onClick={() => {
+                  }}
+                >
+                  {item.input}
+                </a>
+              </li>
               );
             })}
           </ul>
