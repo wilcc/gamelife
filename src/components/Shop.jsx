@@ -15,7 +15,7 @@ function Shop(props) {
 
       {props.Shop.map((item) => {
         return (
-          <div>
+          <div key ={item.id}>
             <div className="ui tiny image">
             <a href="/#" onClick={()=>props.handlePurchase(item)}>
               <img src={item.image} alt="" />
