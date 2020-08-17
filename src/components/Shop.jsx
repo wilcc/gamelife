@@ -16,7 +16,7 @@ function Shop(props) {
       {props.Shop.map((item) => {
         return (
           <div>
-            <div className="ui small image">
+            <div className="ui tiny image">
             <a href="/#" onClick={()=>props.handlePurchase(item)}>
               <img src={item.image} alt="" />
             </a>
@@ -28,7 +28,7 @@ function Shop(props) {
           </div>
         );
       })}
-      {/* </ul> */}
+
     </div>
   );
 }
