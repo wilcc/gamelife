@@ -52,11 +52,12 @@ class Todo extends Component {
     });
     let newCoin = this.props.coin + 20;
     this.props.setCoin(newCoin);
-    console.log(this.props.coin);
+    localStorage.setItem('myCoin', newCoin);
   };
   
   componentDidMount() {
     this.loadList();
+
   }
   render() {
     return (

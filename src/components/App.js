@@ -8,7 +8,7 @@ import user from '../data/user'
 
 class App extends Component {
   state = {
-    coin: user.coin,
+    coin: Number(localStorage.getItem('myCoin')) || user.coin,
     shop,
   };
   loadList = () => {
@@ -77,6 +77,7 @@ class App extends Component {
     newCoin < 0
       ? console.log('sorry not enough coin')
       : this.setState({ coin: newCoin, shop: newList }, () => {
+    localStorage.setItem('myCoin', newCoin);
           console.log(this.state.coin);
         });
   };
