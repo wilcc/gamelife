@@ -3,6 +3,7 @@ import Input from './Input';
 import axios from 'axios';
 import './todo.css'
 
+
 class Todo extends Component {
   state = {
     list: [],
@@ -62,6 +63,7 @@ class Todo extends Component {
   render() {
     return (
         <div className="container" style={{ width: '500px' }}>
+          <h2>To Do List</h2>
           <Input
             input={this.state.input}
             handleChange={this.handleChange}

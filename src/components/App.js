@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
 import Shop from './Shop';
-import Daily from './Daily'
+import Daily from './Daily';
 import axios from 'axios';
-import shop from '../data/shop'
-import user from '../data/user'
-import Swal from 'sweetalert2'
+import shop from '../data/shop';
+import user from '../data/user';
+import Swal from 'sweetalert2';
+import NavBar from './NavBar';
 
 class App extends Component {
   state = {
@@ -51,11 +52,11 @@ class App extends Component {
   //       });
   //   }
   // };
-  setCoin = (newCoin) =>{
+  setCoin = (newCoin) => {
     this.setState({
-      coin:newCoin
-    })
-  }
+      coin: newCoin,
+    });
+  };
   // handleComplete = (id) => {
   //   axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
   //     this.loadList();
@@ -77,39 +78,39 @@ class App extends Component {
     );
     newCoin < 0
       ? Swal.fire({
-        title: 'Not Enough Coin!',
-        text: 'go back and my more money',
-        imageUrl: 'images/help-me-im-poor.jpg',
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
-      })
+          title: 'Not Enough Coin!',
+          text: 'go back and my more money',
+          imageUrl: 'images/help-me-im-poor.jpg',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        })
       : this.setState({ coin: newCoin, shop: newList }, () => {
-    localStorage.setItem('myCoin', newCoin);
+          localStorage.setItem('myCoin', newCoin);
           console.log(this.state.coin);
         });
   };
-  
+
   render() {
     return (
       <div>
-        <div style={{ display: 'flex', flexDirection: 'row', }}>
-          <div style={{border:'1px solid black'}}>
-            <h2>To Do List</h2>
-            <Todo
-              setCoin = {this.setCoin}
-              coin={this.state.coin}
-            />
+        <NavBar coin={this.state.coin}/>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            paddingLeft: '100px',
+            paddingRight: '100px',
+          }}
+        >
+          <div style={{ border: '1px solid black' }}>
+            <Todo setCoin={this.setCoin} coin={this.state.coin} />
           </div>
-          <div style={{border:'1px solid black'}}>
-            <h2>Dailies</h2>
-            <Daily
-              setCoin = {this.setCoin}
-              coin={this.state.coin}
-            />
+          <div style={{ border: '1px solid black' }}>
+            <Daily setCoin={this.setCoin} coin={this.state.coin} />
           </div>
-          <div style={{border:'1px solid black'}}>
-            <h2>Shop For Your Rewards</h2>
+          <div style={{ border: '1px solid black' }}>
             <Shop Shop={this.state.shop} handlePurchase={this.handlePurchase} />
           </div>
         </div>

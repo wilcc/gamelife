@@ -5,21 +5,24 @@ function Shop(props) {
     <div
       className="ui container"
       style={{
+        width: '70%',
+      }}
+      >
+      <h2>Shop For Your Rewards</h2>
+      <div style={{
         display: 'flex',
         flexDirection: 'row',
         alignContent: 'center',
         flexWrap: 'wrap',
-        width: '50%',
-      }}
-    >
-
+        
+      }}>
       {props.Shop.map((item) => {
         return (
-          <div key ={item.id}>
+          <div key={item.id}>
             <div className="ui tiny image">
-            <a href="/#" onClick={()=>props.handlePurchase(item)}>
-              <img src={item.image} alt="" />
-            </a>
+              <a href="/#" onClick={() => props.handlePurchase(item)}>
+                <img src={item.image} alt="" />
+              </a>
             </div>
             <div>
               {item.price}{' '}
@@ -28,7 +31,7 @@ function Shop(props) {
           </div>
         );
       })}
-
+    </div>
     </div>
   );
 }
