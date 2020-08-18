@@ -5,6 +5,7 @@ import Daily from './Daily'
 import axios from 'axios';
 import shop from '../data/shop'
 import user from '../data/user'
+import Swal from 'sweetalert2'
 
 class App extends Component {
   state = {
@@ -75,7 +76,14 @@ class App extends Component {
       (shopItem) => shopItem.name !== item.name
     );
     newCoin < 0
-      ? console.log('sorry not enough coin')
+      ? Swal.fire({
+        title: 'Not Enough Coin!',
+        text: 'go back and my more money',
+        imageUrl: 'images/help-me-im-poor.jpg',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
       : this.setState({ coin: newCoin, shop: newList }, () => {
     localStorage.setItem('myCoin', newCoin);
           console.log(this.state.coin);
