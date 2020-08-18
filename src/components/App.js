@@ -7,6 +7,7 @@ import shop from '../data/shop';
 import user from '../data/user';
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
+import Profile from './Profile'
 
 class App extends Component {
   state = {
@@ -95,6 +96,7 @@ class App extends Component {
     return (
       <div>
         <NavBar coin={this.state.coin}/>
+        <Profile />
         <div
           style={{
             display: 'flex',

@@ -7,28 +7,19 @@
     display: block;
     position: relative;
     margin: auto;
-    top: ;
-    left: ;
-    right: ;
-    bottom: ;
+    
   }
   .rela-inline {
     display: inline-block;
     position: relative;
     margin: auto;
-    top: ;
-    left: ;
-    right: ;
-    bottom: ;
+    
   }
   .floated {
     display: inline-block;
     position: relative;
     margin: false;
-    top: ;
-    left: ;
-    right: ;
-    bottom: ;
+    
     float: left;
   }
   .floated.right {
@@ -370,7 +361,7 @@
     max-width: 1126px;
     background-color: #f4f4f4;
     margin: 70px auto;
-    padding: 70px 0;
+    padding-top: 70px 
   }
   .profile-card {
     width: calc(100% - 40px);

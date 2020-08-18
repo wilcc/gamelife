@@ -18,12 +18,11 @@ function NavBar(props) {
             <li className="rela-inline menu-toggle">•••</li>
           </ul>
           <div className="floated right nav-div">
-          <img src="/images/icons/goldcoin.png" alt="" width="20px" />
-          {props.coin}
+          <img src="/images/download.png" alt="" width='50px' />
           </div>
-          <ul className="floated right nav-div sign-div">
-            <li className="rela-inline">Sign-Up</li>
-            <li className="rela-inline">Sign-In</li>
+          <ul className="floated right nav-div">
+          <img src="/images/icons/goldcoin.png" alt="" width="30px" />
+          {props.coin}
           </ul>
         </div>
       </div>
