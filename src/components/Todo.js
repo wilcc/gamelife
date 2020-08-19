@@ -52,8 +52,10 @@ class Todo extends Component {
       this.loadList();
     });
     let newCoin = this.props.coin + 20;
-    this.props.setCoin(newCoin);
+    let newExp = this.props.exp + 20;
+    this.props.setCoin(newCoin,newExp);
     localStorage.setItem('myCoin', newCoin);
+    localStorage.setItem('myExp',newExp)
   };
   
   componentDidMount() {

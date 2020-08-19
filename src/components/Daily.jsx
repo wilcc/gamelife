@@ -50,9 +50,10 @@ class Daily extends Component {
       this.loadList();
     });
     let newCoin = this.props.coin + 20;
+    let newExp = this.props.exp +20
     localStorage.setItem('myCoin', newCoin);
-    this.props.setCoin(newCoin);
-    console.log(this.props.coin);
+    localStorage.setItem('myExp', newExp);
+    this.props.setCoin(newCoin,newExp);
   };
   handleRefresh = () => {};
   componentDidMount() {

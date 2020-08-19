@@ -11,8 +11,18 @@ import Profile from './Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
+  // let {}
   state = {
     coin: Number(localStorage.getItem('myCoin')) || user.coin,
+    level: Number(localStorage.getItem('level')) || 1,
+    nextLevel: Math.floor(
+      (100 *
+        (Number(localStorage.getItem('level'))
+          ? Number(localStorage.getItem('level'))
+          : 1)) ^
+        1.5
+    ),
+    exp: Number(localStorage.getItem('myExp')) || 0,
     shop,
   };
   loadList = () => {
@@ -54,8 +64,9 @@ class App extends Component {
   //       });
   //   }
   // };
-  setCoin = (newCoin) => {
+  setCoin = (newCoin, newExp) => {
     this.setState({
+      exp: newExp,
       coin: newCoin,
     });
   };
@@ -87,18 +98,25 @@ class App extends Component {
           imageHeight: 200,
           imageAlt: 'Custom image',
         })
-      : this.setState({ coin: newCoin, shop: newList }, () => {
-          localStorage.setItem('myCoin', newCoin);
-          console.log(this.state.coin);
-        });
+      : this.setState(
+          {
+            coin: newCoin,
+            shop: newList,
+          },
+          () => {
+            localStorage.setItem('myCoin', newCoin);
+          }
+        );
   };
+  componentDidMount() {
+    console.log(this.state.exp);
+  }
 
   render() {
     return (
       <div>
         <NavBar coin={this.state.coin} />
         <Profile />
-
         <div
           style={{
             display: 'flex',
@@ -109,17 +127,23 @@ class App extends Component {
           }}
         >
           <div style={{ border: '1px solid black' }}>
-            <Todo setCoin={this.setCoin} coin={this.state.coin} />
+            <Todo
+              setCoin={this.setCoin}
+              coin={this.state.coin}
+              exp={this.state.exp}
+            />
           </div>
           <div style={{ border: '1px solid black' }}>
-            <Daily setCoin={this.setCoin} coin={this.state.coin} />
+            <Daily
+              setCoin={this.setCoin}
+              coin={this.state.coin}
+              exp={this.state.exp}
+            />
           </div>
           <div style={{ border: '1px solid black' }}>
             <Shop Shop={this.state.shop} handlePurchase={this.handlePurchase} />
           </div>
         </div>
-        
-       
       </div>
     );
   }
