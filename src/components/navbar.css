@@ -418,13 +418,13 @@
     color: #999;
   }
   .works::after {
-    content: "works";
+    content: "Health";
   }
   .followers::after {
-    content: "followers";
+    content: "Experience";
   }
   .following::after {
-    content: "following";
+    content: "Mana";
   }
   .image {
     width: 240px;

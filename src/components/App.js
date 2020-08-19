@@ -7,7 +7,8 @@ import shop from '../data/shop';
 import user from '../data/user';
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
-import Profile from './Profile'
+import Profile from './Profile';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   state = {
@@ -95,8 +96,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar coin={this.state.coin}/>
+        <NavBar coin={this.state.coin} />
         <Profile />
+
         <div
           style={{
             display: 'flex',
@@ -116,6 +118,8 @@ class App extends Component {
             <Shop Shop={this.state.shop} handlePurchase={this.handlePurchase} />
           </div>
         </div>
+        
+       
       </div>
     );
   }

@@ -5,7 +5,7 @@ function Shop(props) {
     <div
       className="ui container"
       style={{
-        width: '70%',
+        width: '100%',
       }}
       >
       <h2>Shop For Your Rewards</h2>

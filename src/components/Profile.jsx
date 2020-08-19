@@ -1,4 +1,6 @@
 import React from 'react';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 
 export default function Profile() {
   return (
@@ -16,15 +18,18 @@ export default function Profile() {
           </div>
           <div className="rela-block profile-card-stats">
             <div className="floated profile-stat works" id="num_works">
-              28
+            <div>
+          <ProgressBar variant="success" now={40} />
+        </div>
+
               <br />
             </div>
             <div className="floated profile-stat followers" id="num_followers">
-              112
+            <ProgressBar variant="info" now={100} />
               <br />
             </div>
             <div className="floated profile-stat following" id="num_following">
-              245
+            <ProgressBar variant="warning" now={60} />
               <br />
             </div>
           </div>
