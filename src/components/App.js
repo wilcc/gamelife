@@ -23,66 +23,37 @@ class App extends Component {
     ),
     exp: Number(localStorage.getItem('myExp')) || 0,
     shop,
+    levelPercent:
+      (Number(localStorage.getItem('myExp')) /
+        Math.floor(
+          (100 *
+            (Number(localStorage.getItem('myLevel'))
+              ? Number(localStorage.getItem('myLevel'))
+              : 1)) ^
+            1.5
+        )) *
+      100,
   };
-  loadList = () => {
-    const url = 'http://localhost:8080/todo/all';
-    axios.get(url).then((dbList) => {
-      this.setState({
-        list: dbList.data,
-      });
-    });
-  };
-  // onDelete = (id) => {
-  //   axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
-  //     this.loadList();
+
+  // loadList = () => {
+  //   const url = 'http://localhost:8080/todo/all';
+  //   axios.get(url).then((dbList) => {
+  //     this.setState({
+  //       list: dbList.data,
+  //     });
   //   });
   // };
-  // handleChange = (event) => {
-  //   this.setState({
-  //     input: event.target.value,
-  //   });
-  // };
-  // handleKeyDown = (e) => {
-  //   // e.preventDefault()
-  //   if (e.key === 'Enter') {
-  //     let axiosConfig = {
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'Access-Control-Allow-Origin': '*',
-  //       },
-  //     };
-  //     let input = this.state.input;
-  //     console.log(this.state.input);
-  //     axios
-  //       .post('http://localhost:8080/todo/create', { input }, [axiosConfig])
-  //       .then(() => {
-  //         this.loadList();
-  //         this.setState({
-  //           input: '',
-  //         });
-  //       });
-  //   }
-  // };
+  percent = Math.floor(this.state.exp/this.state.nextLevel * 100) 
+
   setCoin = (newCoin, newExp) => {
+    let newLevelPercent = Math.floor(newExp/this.state.nextLevel * 100) 
     this.setState({
       exp: newExp,
       coin: newCoin,
+      levelPercent: newLevelPercent
     });
   };
-  // handleComplete = (id) => {
-  //   axios.delete(`http://localhost:8080/todo/remove/${id}`).then(() => {
-  //     this.loadList();
-  //   });
-  //   let newCoin = this.state.coin + 20;
-  //   this.setState(
-  //     {
-  //       coin: newCoin,
-  //     },
-  //     () => {
-  //       console.log(this.state.coin);
-  //     }
-  //   );
-  // };
+
   handlePurchase = (item) => {
     let newCoin = this.state.coin - item.price;
     let newList = this.state.shop.filter(
@@ -107,29 +78,31 @@ class App extends Component {
           }
         );
   };
-  componentDidUpdate(){
-    if(this.state.exp > this.state.nextLevel){
-      let newLevel = this.state.level+1
-      let newExp = this.state.exp-this.state.nextLevel
-      localStorage.setItem('myExp',newExp)
-      localStorage.setItem('myLevel',newLevel)
+  componentDidUpdate() {
+    if (this.state.exp > this.state.nextLevel) {
+      let newLevel = this.state.level + 1;
+      let newExp = this.state.exp - this.state.nextLevel;
+      localStorage.setItem('myExp', newExp);
+      localStorage.setItem('myLevel', newLevel);
       this.setState({
-        level:newLevel,
-        exp:newExp
-      })
+        level: newLevel,
+        exp: newExp,
+      });
     }
   }
   componentDidMount() {
-    console.log('level',this.state.level)
-    console.log('next',this.state.nextLevel)
-    console.log('exp',this.state.exp);
+    console.log('level', this.state.level);
+    console.log('next', this.state.nextLevel);
+    console.log('exp', this.state.exp);
   }
 
   render() {
+    console.log(this.percent);
+    console.log(this.state.levelPercent)
     return (
       <div>
         <NavBar coin={this.state.coin} />
-        <Profile />
+        <Profile percent={this.state.levelPercent}/>
         <div
           style={{
             display: 'flex',

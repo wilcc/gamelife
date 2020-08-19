@@ -2,7 +2,8 @@ import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
-export default function Profile() {
+export default function Profile(props) {
+    console.log('thisisprops',props)
   return (
     <div>
       <div className="rela-block container">
@@ -25,7 +26,7 @@ export default function Profile() {
               <br />
             </div>
             <div className="floated profile-stat followers" id="num_followers">
-            <ProgressBar variant="info" now={100} />
+            <ProgressBar variant="info" now={props.percent} />
               <br />
             </div>
             <div className="floated profile-stat following" id="num_following">
