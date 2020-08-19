@@ -11,14 +11,13 @@ import Profile from './Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
-  // let {}
   state = {
     coin: Number(localStorage.getItem('myCoin')) || user.coin,
-    level: Number(localStorage.getItem('level')) || 1,
+    level: Number(localStorage.getItem('myLevel')) || 1,
     nextLevel: Math.floor(
       (100 *
-        (Number(localStorage.getItem('level'))
-          ? Number(localStorage.getItem('level'))
+        (Number(localStorage.getItem('myLevel'))
+          ? Number(localStorage.getItem('myLevel'))
           : 1)) ^
         1.5
     ),
@@ -108,8 +107,22 @@ class App extends Component {
           }
         );
   };
+  componentDidUpdate(){
+    if(this.state.exp > this.state.nextLevel){
+      let newLevel = this.state.level+1
+      let newExp = this.state.exp-this.state.nextLevel
+      localStorage.setItem('myExp',newExp)
+      localStorage.setItem('myLevel',newLevel)
+      this.setState({
+        level:newLevel,
+        exp:newExp
+      })
+    }
+  }
   componentDidMount() {
-    console.log(this.state.exp);
+    console.log('level',this.state.level)
+    console.log('next',this.state.nextLevel)
+    console.log('exp',this.state.exp);
   }
 
   render() {
