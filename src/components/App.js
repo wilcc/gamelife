@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 import Shop from './Shop';
 import Daily from './Daily';
-import axios from 'axios';
 import shop from '../data/shop';
 import user from '../data/user';
 import Swal from 'sweetalert2';
@@ -82,27 +81,34 @@ class App extends Component {
     if (this.state.exp > this.state.nextLevel) {
       let newLevel = this.state.level + 1;
       let newExp = this.state.exp - this.state.nextLevel;
-      localStorage.setItem('myExp', newExp);
+      let newLevelPercent = newExp/this.state.nextLevel
+      let newNextLevel = Math.floor((100 * (newLevel) ^ 1.5))
+      localStorage.setItem('myExp', newExp)
       localStorage.setItem('myLevel', newLevel);
       this.setState({
         level: newLevel,
         exp: newExp,
+        nextLevel:newNextLevel,
+        levelPercent:newLevelPercent
       });
+      Swal.fire({
+        title: 'Level Up!',
+        text: `Congratulations on reaching level ${newLevel}, now go back and work harder`,
+        imageUrl: 'images/level-up.png',
+        imageAlt: 'Custom image',
+      })
     }
   }
   componentDidMount() {
-    console.log('level', this.state.level);
-    console.log('next', this.state.nextLevel);
-    console.log('exp', this.state.exp);
+    // localStorage.clear('myLevel')
   }
 
   render() {
-    console.log(this.percent);
-    console.log(this.state.levelPercent)
+   
     return (
       <div>
         <NavBar coin={this.state.coin} />
-        <Profile percent={this.state.levelPercent}/>
+        <Profile percent={this.state.levelPercent} level={this.state.level}/>
         <div
           style={{
             display: 'flex',

@@ -384,8 +384,7 @@
     width: 180px;
     border: 10px solid #fff;
     border-radius: 100%;
-    background: url("https://pbs.twimg.com/media/CdbiubzVIAANj8J.jpg") center no-repeat;
-    background-size: cover;
+
   }
   .profile-name-container {
     margin: 0 auto 10px;
@@ -430,7 +429,7 @@
     width: 240px;
     height: 200px;
     cursor: pointer;
-    margin: 0 20px 40px;
+    margin: 0 10px 10px;
     overflow: hidden;
     border-radius: 5px;
     border: 10px solid #fff;
