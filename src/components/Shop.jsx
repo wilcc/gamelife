@@ -37,16 +37,14 @@ function Shop(props) {
         })}
           </Tab>
           <Tab eventKey="armor" title="Armor" style={{
-
             display: 'flex',
             flexDirection: 'row',
             alignContent: 'center',
             flexWrap: 'wrap',
-
         }}>
           {props.Shop.filter((item=> item.category==='armor')).map((item) => {
           return (
-            <div  key={item.id}>
+            <div style={{width:'50%'}} key={item.id}>
               <div className="ui small image">
                 <a href="/#" onClick={() => props.handlePurchase(item)}>
                   <img src={item.image} alt="" />
@@ -60,7 +58,7 @@ function Shop(props) {
           );
         })}
           </Tab>
-          <Tab eventKey="Items" title="Contact" >
+          <Tab eventKey="items" title="Item" >
 
           </Tab>
         </Tabs>
