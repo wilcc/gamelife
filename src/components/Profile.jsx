@@ -30,7 +30,7 @@ export default function Profile(props) {
               <br />
             </div>
             <div className="floated profile-stat followers" id="num_followers">
-              <ProgressBar variant="warning" now={props.percent} />
+              <ProgressBar animated variant="warning" now={props.percent} />
               <br />
             </div>
             <div className="floated profile-stat following" id="num_following">

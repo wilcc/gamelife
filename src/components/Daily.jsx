@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 class Daily extends Component {
   state = {
@@ -16,9 +17,26 @@ class Daily extends Component {
     });
   };
   onDelete = (id) => {
-    axios.delete(`http://localhost:8080/daily/remove/${id}`).then(() => {
-      this.loadList();
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        axios.delete(`http://localhost:8080/daily/remove/${id}`).then(() => {
+          this.loadList();
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        });
+      }
+    })
   };
   handleChange = (event) => {
     this.setState({

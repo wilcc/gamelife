@@ -34,14 +34,6 @@ class App extends Component {
       100,
   };
 
-  // loadList = () => {
-  //   const url = 'http://localhost:8080/todo/all';
-  //   axios.get(url).then((dbList) => {
-  //     this.setState({
-  //       list: dbList.data,
-  //     });
-  //   });
-  // };
   percent = Math.floor(this.state.exp/this.state.nextLevel * 100) 
 
   setCoin = (newCoin, newExp) => {
