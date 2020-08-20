@@ -1,4 +1,6 @@
 import React from 'react';
+import Armor from './Armor'
+import Weapon from './Weapon'
 
 function Item(props) {
   return (
@@ -13,8 +15,9 @@ function Item(props) {
         paddingRight: '100px',
       }}
     >
-
-        {props.Shop.map((item) => {
+        <Armor Shop={props.Shop}/>
+        <Weapon Shop={props.Shop} />
+        {/* {props.Shop.map((item) => {
           return (
             <div key={item.id}>
               <div className="ui small image">
@@ -28,8 +31,8 @@ function Item(props) {
               </div>
             </div>
           );
-        })}
-
+        })} */}
+        
     </div>
   );
 }
