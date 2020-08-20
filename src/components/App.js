@@ -33,7 +33,7 @@ class App extends Component {
             1.5
         )) *
       100,
-    item: false,
+    toggle: 'item',
   };
 
   setCoin = (newCoin, newExp) => {
@@ -44,10 +44,10 @@ class App extends Component {
       levelPercent: newLevelPercent,
     });
   };
-  setItem = ()=>{
-    let newItemState = !this.state.item
+  setItem = (state)=>{
+    let newState = state
     this.setState({
-      item:newItemState
+      toggle:newState
     })
   }
 
@@ -106,9 +106,9 @@ class App extends Component {
       <div>
         <NavBar coin={this.state.coin} setItem={this.setItem}/>
         <Profile percent={this.state.levelPercent} level={this.state.level} />
-        {this.state.item === true ? (
+        {this.state.toggle === 'item' ? (
           <Item Shop={this.state.shop} handlePurchase={this.handlePurchase} />
-        ) : (
+        ) : this.state.toggle === 'task' ?(
           <div
             style={{
               display: 'flex',
@@ -139,7 +139,7 @@ class App extends Component {
               />
             </div>
           </div>
-        )}
+        ): <div>test</div>}
       </div>
     );
   }
