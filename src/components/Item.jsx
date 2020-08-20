@@ -15,7 +15,9 @@ function Item(props) {
         paddingRight: '100px',
       }}
     >
+        <h2>Armors</h2>
         <Armor Shop={props.Shop}/>
+        <h2>Weapons</h2>
         <Weapon Shop={props.Shop} />
         
         

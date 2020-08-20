@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import NavBar from './NavBar';
 import Profile from './Profile';
 import Item from './Item';
+import Dungeon from './Dungeon';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -44,12 +45,12 @@ class App extends Component {
       levelPercent: newLevelPercent,
     });
   };
-  setItem = (state)=>{
-    let newState = state
+  setItem = (state) => {
+    let newState = state;
     this.setState({
-      toggle:newState
-    })
-  }
+      toggle: newState,
+    });
+  };
 
   handlePurchase = (item) => {
     let newCoin = this.state.coin - item.price;
@@ -104,11 +105,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar coin={this.state.coin} setItem={this.setItem}/>
+        <NavBar coin={this.state.coin} setItem={this.setItem} />
         <Profile percent={this.state.levelPercent} level={this.state.level} />
         {this.state.toggle === 'item' ? (
           <Item Shop={this.state.shop} handlePurchase={this.handlePurchase} />
-        ) : this.state.toggle === 'task' ?(
+        ) : this.state.toggle === 'task' ? (
           <div
             style={{
               display: 'flex',
@@ -139,7 +140,14 @@ class App extends Component {
               />
             </div>
           </div>
-        ): <div>test</div>}
+        ) : this.state.toggle === 'dungeon' ? (
+          <div>
+            {' '}
+            <Dungeon />
+          </div>
+        ) : (
+          <div>test</div>
+        )}
       </div>
     );
   }

@@ -8,9 +8,14 @@ function NavBar(props) {
         <div className="horz-center nav-container">
           <div className="floated logo">GameLife</div>
           <ul className="floated nav-div nav-links">
-            <li className="rela-inline" onClick={() => {
+            <li
+              className="rela-inline"
+              onClick={() => {
                 props.setItem('task');
-              }}>Tasks</li>
+              }}
+            >
+              Tasks
+            </li>
             <li
               className="rela-inline"
               onClick={() => {
@@ -19,7 +24,14 @@ function NavBar(props) {
             >
               Items
             </li>
-            <li className="rela-inline">Dungeons</li>
+            <li
+              className="rela-inline"
+              onClick={() => {
+                props.setItem('dungeon');
+              }}
+            >
+              Dungeons
+            </li>
             <li className="rela-inline">Community</li>
             <li className="rela-inline">Shops</li>
           </ul>
