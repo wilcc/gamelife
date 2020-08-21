@@ -5,6 +5,7 @@ let monster = [
     maxHp:400,
     description: 'adorable but dangerous',
     expReward: 100,
+    coinReward: 100,
     id:1
 },
     {name: 'Dirty Rock Golem',
@@ -13,14 +14,16 @@ let monster = [
     maxHp:100,
     description: "Hard and Stinky Golem that you would stay away",
     expReward: 500,
+    coinReward: 500,
     id:2
 },
     {name: 'Ancient Golem',
     image:'images/monster/monster3.png',
-    hp:5000,
+    hp:10,
     maxHp:5000,
     description: 'Consequence is deadly',
     expReward: 10000,
+    coinReward: 10000,
     id:3
 }
 ]

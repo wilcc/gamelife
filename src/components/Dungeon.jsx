@@ -10,7 +10,6 @@ class Dungeon extends Component {
   };
   attackConfirmation = (monster) => {
     Swal.fire({
-      Health: <ProgressBar variant="success" now={100} />,
       title: 'Are you sure?',
       text: `You are about to attack this ${monster.name}, consequence is unknown`,
       icon: 'warning',
@@ -19,12 +18,15 @@ class Dungeon extends Component {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: `Yes, let's destroy it!`,
-    }).then((result) => {
-      if (result.value) {
-        this.attackMonster(monster);
-      }
-    });
+    })
+      .then((result) => {
+        if (result.value) {
+          this.attackMonster(monster);
+        }
+      })
+      
   };
+
   attackMonster = (monster) => {
     let damage = Math.floor(Math.random() * 100);
     let newHp = monster.hp - damage;
@@ -36,16 +38,27 @@ class Dungeon extends Component {
       ...newArray[elementsIndex],
       hp: newHp,
     };
+    if(newHp <= 0){
+        ( Swal.fire({title: 'Congratulation',
+        text: `You have defeated ${monster.name}`,
+        icon: 'success',
+    }))
+    let newCoin = this.props.coin + monster.coinReward;
+    let newExp = this.props.exp + monster.expReward;
+    this.props.setCoin(newCoin,newExp);
+    localStorage.setItem('myCoin', newCoin);
+    localStorage.setItem('myExp',newExp)
+    }
     this.setState({
       monster: newArray,
-    });
+    })
+    
   };
   render() {
     return (
       <div className="ui container">
         <Carousel>
           {this.state.monster.map((monster) => {
-            console.log(this.state.monster);
             return (
               <Carousel.Item key={monster.id}>
                 <ProgressBar

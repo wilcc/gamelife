@@ -23,8 +23,8 @@ class App extends Component {
         1.5
     ),
     exp: Number(localStorage.getItem('myExp')) || 0,
-    health:100,
-    mana:100,
+    health: 100,
+    mana: 100,
     shop,
     levelPercent:
       (Number(localStorage.getItem('myExp')) /
@@ -145,7 +145,11 @@ class App extends Component {
         ) : this.state.toggle === 'dungeon' ? (
           <div>
             {' '}
-            <Dungeon />
+            <Dungeon
+              setCoin={this.setCoin}
+              coin={this.state.coin}
+              exp={this.state.exp}
+            />
           </div>
         ) : (
           <div>test</div>
