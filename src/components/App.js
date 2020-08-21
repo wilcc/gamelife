@@ -36,7 +36,7 @@ class App extends Component {
             1.5
         )) *
       100,
-    toggle: 'item',
+    toggle: 'task',
   };
 
   setCoin = (newCoin, newExp) => {
