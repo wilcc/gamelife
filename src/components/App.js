@@ -23,6 +23,8 @@ class App extends Component {
         1.5
     ),
     exp: Number(localStorage.getItem('myExp')) || 0,
+    health:100,
+    mana:100,
     shop,
     levelPercent:
       (Number(localStorage.getItem('myExp')) /
