@@ -24,7 +24,7 @@ export default function Profile(props) {
           <div className="rela-block profile-card-stats">
             <div className="floated profile-stat works" id="num_works">
               <div>
-                <ProgressBar variant="success" now={100} />
+                <ProgressBar variant="success" now={props.health} />
               </div>
 
               <br />

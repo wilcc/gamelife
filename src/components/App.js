@@ -24,6 +24,7 @@ class App extends Component {
     ),
     exp: Number(localStorage.getItem('myExp')) || 0,
     health: 100,
+    maxHealth: 100,
     mana: 100,
     shop,
     levelPercent:
@@ -53,7 +54,11 @@ class App extends Component {
       toggle: newState,
     });
   };
-
+  setHealth = (newHealth) => {
+    this.setState({
+      health: newHealth,
+    });
+  };
   handlePurchase = (item) => {
     let newCoin = this.state.coin - item.price;
     let newList = this.state.shop.filter(
@@ -99,6 +104,7 @@ class App extends Component {
         imageAlt: 'Custom image',
       });
     }
+    
   }
   componentDidMount() {
     // localStorage.clear('myLevel')
@@ -108,7 +114,11 @@ class App extends Component {
     return (
       <div>
         <NavBar coin={this.state.coin} setItem={this.setItem} />
-        <Profile percent={this.state.levelPercent} level={this.state.level} />
+        <Profile
+          percent={this.state.levelPercent}
+          level={this.state.level}
+          health={(this.state.health / this.state.maxHealth) * 100}
+        />
         {this.state.toggle === 'item' ? (
           <Item Shop={this.state.shop} handlePurchase={this.handlePurchase} />
         ) : this.state.toggle === 'task' ? (
@@ -149,6 +159,8 @@ class App extends Component {
               setCoin={this.setCoin}
               coin={this.state.coin}
               exp={this.state.exp}
+              health={this.state.health}
+              setHealth={this.setHealth}
             />
           </div>
         ) : (

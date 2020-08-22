@@ -29,7 +29,17 @@ class Dungeon extends Component {
 
   attackMonster = (monster) => {
     let damage = Math.floor(Math.random() * 100);
+    let damageTaken = Math.floor(Math.random() *10)
     let newHp = monster.hp - damage;
+    let characterHp = this.props.health - damageTaken
+    this.props.setHealth(characterHp)
+    if(characterHp <= 0){
+        Swal.fire({
+          title: 'Oh No, you have been defeated',
+          text: `Complete more tasks to level up`,
+          imageUrl: 'images/dead.jpg',
+        });
+      }
     const elementsIndex = this.state.monster.findIndex(
       (element) => element.id === monster.id
     );
