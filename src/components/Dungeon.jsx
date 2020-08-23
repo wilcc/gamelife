@@ -32,14 +32,8 @@ class Dungeon extends Component {
     let damageTaken = Math.floor(Math.random() *10)
     let newHp = monster.hp - damage;
     let characterHp = this.props.health - damageTaken
+    if(characterHp<=0){characterHp=0}
     this.props.setHealth(characterHp)
-    if(characterHp <= 0){
-        Swal.fire({
-          title: 'Oh No, you have been defeated',
-          text: `Complete more tasks to level up`,
-          imageUrl: 'images/dead.jpg',
-        });
-      }
     const elementsIndex = this.state.monster.findIndex(
       (element) => element.id === monster.id
     );
@@ -48,6 +42,7 @@ class Dungeon extends Component {
       ...newArray[elementsIndex],
       hp: newHp,
     };
+    console.log(characterHp)
     if(newHp <= 0){
         ( Swal.fire({title: 'Congratulation',
         text: `You have defeated ${monster.name}`,
@@ -62,7 +57,13 @@ class Dungeon extends Component {
     this.setState({
       monster: newArray,
     })
-    
+    if(characterHp === 0){
+        Swal.fire({
+          title: 'Oh No, you have been defeated',
+          text: `Complete more tasks to level up`,
+          imageUrl: 'images/dead.jpg',
+        });
+      }
   };
   render() {
     return (
