@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './Input';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import PropTypes from 'prop-types';
 
 class Daily extends Component {
   state = {
@@ -136,3 +137,11 @@ class Daily extends Component {
 }
 
 export default Daily;
+
+
+Daily.propTypes = {
+  setCoin: PropTypes.func,
+  coin: PropTypes.number,
+  exp: PropTypes.number
+
+};

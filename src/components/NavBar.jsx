@@ -1,5 +1,7 @@
 import React from 'react';
 import './navbar.css';
+import PropTypes from 'prop-types';
+
 
 function NavBar(props) {
   return (
@@ -49,3 +51,9 @@ function NavBar(props) {
   );
 }
 export default NavBar;
+
+
+NavBar.propTypes={
+  coin:PropTypes.number,
+  setItem:PropTypes.func
+}

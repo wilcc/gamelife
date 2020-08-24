@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Swal from 'sweetalert2';
 import monster from '../data/monster';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import PropTypes from 'prop-types';
 
 class Dungeon extends Component {
   state = {
@@ -18,22 +19,22 @@ class Dungeon extends Component {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: `Yes, let's destroy it!`,
-    })
-      .then((result) => {
-        if (result.value) {
-          this.attackMonster(monster);
-        }
-      })
-      
+    }).then((result) => {
+      if (result.value) {
+        this.attackMonster(monster);
+      }
+    });
   };
 
   attackMonster = (monster) => {
     let damage = Math.floor(Math.random() * 100);
-    let damageTaken = Math.floor(Math.random() *10)
+    let damageTaken = Math.floor(Math.random() * 10);
     let newHp = monster.hp - damage;
-    let characterHp = this.props.health - damageTaken
-    if(characterHp<=0){characterHp=0}
-    this.props.setHealth(characterHp)
+    let characterHp = this.props.health - damageTaken;
+    if (characterHp <= 0) {
+      characterHp = 0;
+    }
+    this.props.setHealth(characterHp);
     const elementsIndex = this.state.monster.findIndex(
       (element) => element.id === monster.id
     );
@@ -42,28 +43,29 @@ class Dungeon extends Component {
       ...newArray[elementsIndex],
       hp: newHp,
     };
-    console.log(characterHp)
-    if(newHp <= 0){
-        ( Swal.fire({title: 'Congratulation',
+    console.log(characterHp);
+    if (newHp <= 0) {
+      Swal.fire({
+        title: 'Congratulation',
         text: `You have defeated ${monster.name}`,
         icon: 'success',
-    }))
-    let newCoin = this.props.coin + monster.coinReward;
-    let newExp = this.props.exp + monster.expReward;
-    this.props.setCoin(newCoin,newExp);
-    localStorage.setItem('myCoin', newCoin);
-    localStorage.setItem('myExp',newExp)
+      });
+      let newCoin = this.props.coin + monster.coinReward;
+      let newExp = this.props.exp + monster.expReward;
+      this.props.setCoin(newCoin, newExp);
+      localStorage.setItem('myCoin', newCoin);
+      localStorage.setItem('myExp', newExp);
     }
     this.setState({
       monster: newArray,
-    })
-    if(characterHp === 0){
-        Swal.fire({
-          title: 'Oh No, you have been defeated',
-          text: `Complete more tasks to level up`,
-          imageUrl: 'images/dead.jpg',
-        });
-      }
+    });
+    if (characterHp === 0) {
+      Swal.fire({
+        title: 'Oh No, you have been defeated',
+        text: `Complete more tasks to level up`,
+        imageUrl: 'images/dead.jpg',
+      });
+    }
   };
   render() {
     return (
@@ -99,3 +101,11 @@ class Dungeon extends Component {
 }
 
 export default Dungeon;
+
+Dungeon.propTypes = {
+  setCoin: PropTypes.func,
+  coin: PropTypes.number,
+  exp: PropTypes.number,
+  health: PropTypes.number,
+  setHealth: PropTypes.func,
+};

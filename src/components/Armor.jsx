@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 function Armor(props) {
   return (
@@ -30,3 +32,21 @@ function Armor(props) {
 }
 
 export default Armor;
+
+Armor.propTypes = {
+  handlePurchase: PropTypes.func,
+  Shop: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.symbol,
+        PropTypes.number,
+      ]).isRequired,
+    })
+  ),
+
+};

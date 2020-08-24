@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import axios from 'axios';
+import PropTypes from 'prop-types'
 import './todo.css'
 
 
@@ -104,3 +105,11 @@ class Todo extends Component {
 }
 
 export default Todo;
+
+
+Todo.propTypes = {
+  setCoin: PropTypes.func,
+  coin: PropTypes.number,
+  exp: PropTypes.number
+
+};

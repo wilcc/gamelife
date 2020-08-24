@@ -26,6 +26,7 @@ class App extends Component {
     health: 100,
     maxHealth: 100,
     mana: 100,
+    class: localStorage.getItem('myClass') || 'Rookie',
     shop,
     levelPercent:
       (Number(localStorage.getItem('myExp')) /
@@ -109,6 +110,12 @@ class App extends Component {
         imageAlt: 'Custom image',
       });
     }
+
+    if(this.state.level === 5 && this.state.class === 'Rookie'){
+      Swal.fire({
+        
+      })
+    }
     
   }
   componentDidMount() {
@@ -123,6 +130,7 @@ class App extends Component {
           percent={this.state.levelPercent}
           level={this.state.level}
           health={(this.state.health / this.state.maxHealth) * 100}
+          class = {this.state.class}
         />
         {this.state.toggle === 'item' ? (
           <Item Shop={this.state.shop} handlePurchase={this.handlePurchase} />

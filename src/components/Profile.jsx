@@ -1,14 +1,15 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import PropTypes from 'prop-types';
 
-export default function Profile(props) {
+function Profile(props) {
   let urll = `images/avatar/con${props.level}.png`;
   return (
     <div>
       <div className="rela-block container">
         <div className="rela-block profile-card">
           <div
-          className="profile-pic"
+            className="profile-pic"
             style={{
               background: `url(${urll}) center/cover no-repeat `,
             }}
@@ -19,6 +20,9 @@ export default function Profile(props) {
             </div>
             <div className="rela-block user-desc" id="user_description">
               Level : {props.level}
+            </div>
+            <div className="rela-block user-desc" id="user_description">
+              Class : {props.class}
             </div>
           </div>
           <div className="rela-block profile-card-stats">
@@ -43,3 +47,12 @@ export default function Profile(props) {
     </div>
   );
 }
+
+export default Profile;
+
+Profile.prototype = {
+  percent: PropTypes.number,
+  level: PropTypes.number,
+  health: PropTypes.number,
+  class: PropTypes.string,
+};
