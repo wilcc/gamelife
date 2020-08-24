@@ -1,6 +1,7 @@
 import React from 'react';
 import Armor from './Armor'
 import Weapon from './Weapon'
+import Items from './Items'
 
 function Item(props) {
   return (
@@ -19,7 +20,10 @@ function Item(props) {
         <Armor Shop={props.Shop}/>
         <h2>Weapons</h2>
         <Weapon Shop={props.Shop} />
+        <h2>Items</h2>
+        <Items Shop={props.Shop} />
         
+      
         
     </div>
   );

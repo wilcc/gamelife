@@ -61,6 +61,11 @@ class App extends Component {
   };
   handlePurchase = (item) => {
     let newCoin = this.state.coin - item.price;
+    if(item.category==='potion'){
+      let newHp = this.state.health + item.price
+      newHp > this.state.maxHealth ? newHp = this.state.maxHealth : 
+      this.setHealth(newHp)
+    }
     let newList = this.state.shop.filter(
       (shopItem) => shopItem.name !== item.name
     );
@@ -107,7 +112,7 @@ class App extends Component {
     
   }
   componentDidMount() {
-    // localStorage.clear('myLevel')
+    localStorage.clear('myLevel')
   }
 
   render() {
