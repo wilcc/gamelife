@@ -22,7 +22,7 @@ function Profile(props) {
               Level : {props.level}
             </div>
             <div className="rela-block user-desc" id="user_description">
-              Class : {props.class}
+              Class : {props.class} <img src={props.classImage} width="20px" alt="" />
             </div>
           </div>
           <div className="rela-block profile-card-stats">

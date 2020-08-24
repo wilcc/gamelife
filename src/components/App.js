@@ -27,6 +27,7 @@ class App extends Component {
     maxHealth: 100,
     mana: 100,
     class: localStorage.getItem('myClass') || 'Rookie',
+    classImage:localStorage.getItem('myClassImage') || '',
     shop,
     levelPercent:
       (Number(localStorage.getItem('myExp')) /
@@ -108,18 +109,57 @@ class App extends Component {
         text: `Congratulations on reaching level ${newLevel}, now go back and work harder`,
         imageUrl: 'images/level-up.png',
         imageAlt: 'Custom image',
+        backdrop: `
+        rgba(0,0,123,0.4)
+        url("/images/firework.gif")
+      `
       });
     }
 
-    if(this.state.level === 5 && this.state.class === 'Rookie'){
+    if(this.state.level >= 5 && this.state.class === 'Rookie'){
       Swal.fire({
-        
+        title: 'Pick your class',
+        text: "You won't be able to revert this!",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Warrior',
+        cancelButtonText: 'Mage'
+      }).then((result) => {
+        if (result.value) {
+          let newClass = 'Warrior'
+          this.setState({
+            class:newClass,
+            classImage: 'images/icons/sword.png'
+          })
+          localStorage.setItem('myClass', 'Warrior')
+          localStorage.setItem('myClassImage', 'images/icons/sword.png')
+          Swal.fire({
+            title:'Welcome Warrior',
+            imageUrl: 'images/icons/sword.png'
+          }
+          )
+        }else{
+          let newClass = 'Mage'
+          this.setState({
+            class:newClass,
+            classImage: 'images/icons/mage.png'
+          })
+          localStorage.setItem('myClass', 'Mage')
+          localStorage.setItem('myClassImage', 'images/icons/mage.png')
+          Swal.fire({
+            title:'Welcome Mage',
+            imageUrl: 'images/icons/mage.png'
+          }
+          )
+        }
       })
     }
     
   }
   componentDidMount() {
-    localStorage.clear('myLevel')
+    // localStorage.clear('myLevel')
   }
 
   render() {
@@ -131,6 +171,7 @@ class App extends Component {
           level={this.state.level}
           health={(this.state.health / this.state.maxHealth) * 100}
           class = {this.state.class}
+          classImage = {this.state.classImage}
         />
         {this.state.toggle === 'item' ? (
           <Item Shop={this.state.shop} handlePurchase={this.handlePurchase} />

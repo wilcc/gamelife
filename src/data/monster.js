@@ -19,7 +19,7 @@ let monster = [
 },
     {name: 'Ancient Golem',
     image:'images/monster/monster3.png',
-    hp:10,
+    hp:5000,
     maxHp:5000,
     description: 'Consequence is deadly',
     expReward: 10000,

@@ -30,6 +30,9 @@ class Dungeon extends Component {
     let damage = Math.floor(Math.random() * 100);
     let damageTaken = Math.floor(Math.random() * 10);
     let newHp = monster.hp - damage;
+    if(newHp<=0){
+      newHp = 0
+    }
     let characterHp = this.props.health - damageTaken;
     if (characterHp <= 0) {
       characterHp = 0;
