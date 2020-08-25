@@ -1,68 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## GameLife- Life's a game and game life is a different life
 
-## Available Scripts
+### This App was designed to make keeping track of everyday life chores a little more interesting.
 
-In the project directory, you can run:
+After you clone and npm install all the packages. You can host this app on your local server.
 
-### `npm start`
+On the main page you will see a todo list, a dailies list and a 'shop'.
+You can add things you want to be done to the todo list, once you complete the task the item will be removed and your character will gain exp and gold. You can also delete the task, but you will not gain anything from it. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If it's something you would be doing everyday repetitively, you can add it to the dailies list, where everything functions the same as the todo list but after you complete the task it will not be removed from the list, and it would reset on 00:00AM everyday so you can complete it again the next day.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+After you gain enough gold, you can purchase weapon and armor for you character, or you can buy potions which recover your lost HP.
 
-### `npm test`
+On the top you can see a NavBar which different tabs. 
+Task- Our main page with the todo and dailies list.
+Item- One Stop Shop where you can purchase all the items you want
+Dungeons- Where you encounter monsters. You can gain exp and gold by defeating them. Beware some might be stronger than others. The stronger they are, the better of rewards. You can only defeat each monster once a day.
+Community-(still in development)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+note: this version is still a M.V.P. many bugs may exists.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

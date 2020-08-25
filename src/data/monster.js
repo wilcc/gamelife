@@ -6,6 +6,7 @@ let monster = [
     description: 'adorable but dangerous',
     expReward: 100,
     coinReward: 100,
+    defeated:false,
     id:1
 },
     {name: 'Dirty Rock Golem',
@@ -13,8 +14,9 @@ let monster = [
     hp:100,
     maxHp:100,
     description: "Hard and Stinky Golem that you would stay away",
-    expReward: 500,
+    expReward: 600,
     coinReward: 500,
+    defeated:false,
     id:2
 },
     {name: 'Ancient Golem',
@@ -24,6 +26,7 @@ let monster = [
     description: 'Consequence is deadly',
     expReward: 10000,
     coinReward: 10000,
+    defeated: false,
     id:3
 }
 ]

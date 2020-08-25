@@ -10,6 +10,18 @@ class Dungeon extends Component {
     monster,
   };
   attackConfirmation = (monster) => {
+    this.props.health <= 0 ? Swal.fire({
+      title: 'You are dead',
+      text: `A pile of bones can't do nothing, go get some item and recover you health`,
+      icon: 'warning',
+      imageUrl: 'images/bones.jpg'
+    }) :
+    monster.defeated === true ? Swal.fire({
+      title: 'Monster is dead',
+      text: `You can only defeat him once a day`,
+      icon: 'warning',
+      imageUrl: monster.image,
+    }) :
     Swal.fire({
       title: 'Are you sure?',
       text: `You are about to attack this ${monster.name}, consequence is unknown`,
@@ -28,7 +40,7 @@ class Dungeon extends Component {
 
   attackMonster = (monster) => {
     let damage = Math.floor(Math.random() * 100);
-    let damageTaken = Math.floor(Math.random() * 10);
+    let damageTaken = Math.floor(Math.random() * 20);
     let newHp = monster.hp - damage;
     if(newHp<=0){
       newHp = 0
@@ -46,7 +58,7 @@ class Dungeon extends Component {
       ...newArray[elementsIndex],
       hp: newHp,
     };
-    console.log(characterHp);
+
     if (newHp <= 0) {
       Swal.fire({
         title: 'Congratulation',
@@ -55,6 +67,11 @@ class Dungeon extends Component {
       });
       let newCoin = this.props.coin + monster.coinReward;
       let newExp = this.props.exp + monster.expReward;
+      let monsterStatus = true
+      newArray[elementsIndex] = {
+        ...newArray[elementsIndex],
+        defeated: monsterStatus,
+      };
       this.props.setCoin(newCoin, newExp);
       localStorage.setItem('myCoin', newCoin);
       localStorage.setItem('myExp', newExp);
