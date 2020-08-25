@@ -15,6 +15,7 @@ function Item(props) {
         flexWrap:"wrap",
         paddingLeft: '100px',
         paddingRight: '100px',
+        backgroundColor:'transparent'
       }}
     >
         <h2>Armors</h2>

@@ -69,7 +69,7 @@ class App extends Component {
       this.setHealth(newHp)
     }
     let newList = this.state.shop.filter(
-      (shopItem) => shopItem.name !== item.name
+      (shopItem) => shopItem.id !== item.id
     );
     newCoin < 0
       ? Swal.fire({
@@ -159,12 +159,14 @@ class App extends Component {
     
   }
   componentDidMount() {
-    // localStorage.clear('myLevel')
+    // localStorage.clear()
   }
 
   render() {
     return (
-      <div>
+      <div 
+      style={{backgroundImage:"url('images/gameBackground.jpg')",backgroundSize:'cover'}}
+      >
         <NavBar coin={this.state.coin} setItem={this.setItem} />
         <Profile
           percent={this.state.levelPercent}

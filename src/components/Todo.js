@@ -65,7 +65,7 @@ class Todo extends Component {
   }
   render() {
     return (
-        <div className="container" style={{ width: '500px' }}>
+        <div className="container" style={{ width: '500px',backgroundColor:'transparent' }}>
           <h2>To Do List</h2>
           <Input
             input={this.state.input}

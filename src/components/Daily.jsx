@@ -80,7 +80,7 @@ class Daily extends Component {
   }
   render() {
     return (
-      <div className="ui container" style={{ width: '500px' }}>
+      <div className="ui container" style={{ width: '500px',backgroundColor:'transparent'}}>
             <h2>Dailies</h2>
         <Input
           input={this.state.input}

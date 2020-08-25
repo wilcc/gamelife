@@ -9,6 +9,8 @@ function Shop(props) {
       className="ui container"
       style={{
         width: '100%',
+        backgroundColor:'transparent',
+        color:'white'
       }}
     >
       <h2>Shop For Your Rewards</h2>
